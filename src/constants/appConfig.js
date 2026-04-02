@@ -1,4 +1,3 @@
-// Color theme presets (accent, background, text, QR).
 export const PRESETS = [
   { name: 'Forest',  primary: '#16a34a', bg: '#f0fdf4', text: '#14532d', qr: '#14532d' },
   { name: 'Ocean',   primary: '#0ea5e9', bg: '#f0f9ff', text: '#0c4a6e', qr: '#0c4a6e' },
@@ -9,6 +8,10 @@ export const PRESETS = [
   { name: 'Gold',    primary: '#d97706', bg: '#fffbeb', text: '#78350f', qr: '#78350f' },
   { name: 'Teal',    primary: '#0d9488', bg: '#f0fdfa', text: '#134e4a', qr: '#134e4a' },
 ]
+
+export const PRESET_MAP = Object.fromEntries(
+  PRESETS.map((p) => [p.name.toLowerCase(), p])
+)
 
 // Frame style options for the label.
 export const FRAMES = [

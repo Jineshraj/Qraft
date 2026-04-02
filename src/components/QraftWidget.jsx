@@ -1,6 +1,7 @@
 import React from 'react'
 import { QRCodeSVG } from 'qrcode.react'
 import { buildUPIString, hexToRgb, formatINR } from '../core/upi'
+import { PRESET_MAP } from '../constants/appConfig'
 
 const SIZES = {
   sm: { width: 270, qr: 130, font: 13 },
@@ -10,6 +11,8 @@ const SIZES = {
 }
 
 export default function QraftWidget(props) {
+  const presetKey = (props.colorPreset || '').toLowerCase()
+  const preset = PRESET_MAP[presetKey]
   const state = props.state || {
     upiId: props.upiId || '',
     payee: props.payeeName || props.payee || '',
@@ -18,10 +21,10 @@ export default function QraftWidget(props) {
     bizName: props.bizName || '',
     tagline: props.tagline || '',
     logoDataUrl: props.logoUrl || props.logoDataUrl || null,
-    primaryColor: props.primaryColor || '#16a34a',
-    bgColor: props.bgColor || '#f0fdf4',
-    textColor: props.textColor || '#14532d',
-    qrColor: props.qrColor || '#14532d',
+    primaryColor: props.primaryColor || preset?.primary || '#16a34a',
+    bgColor: props.bgColor || preset?.bg || '#f0fdf4',
+    textColor: props.textColor || preset?.text || '#14532d',
+    qrColor: props.qrColor || preset?.qr || '#14532d',
     frame: props.frame || 'minimal',
     size: props.size || 'md',
   }

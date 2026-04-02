@@ -1,5 +1,5 @@
 {
-  "name": "qraft",
+  "name": "qraft-upi-qr",
   "version": "0.1.0",
   "description": "Qraft - UPI QR & label generator for React",
   "type": "module",

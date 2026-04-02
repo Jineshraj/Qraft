@@ -1,11 +1,11 @@
-# Qraft
+# Qraft UPI QR
 
 A reusable React package for generating UPI QR labels and a complete 3-step studio UI.
 
 ## Installation
 
 ```bash
-npm install qraft
+npm install qraft-upi-qr
 ```
 
 ## Quick Usage
@@ -13,8 +13,8 @@ npm install qraft
 ### QraftWidget (stateless)
 
 ```jsx
-import { QraftWidget } from 'qraft'
-import 'qraft/dist/style.css'
+import { QraftWidget } from 'qraft-upi-qr'
+import 'qraft-upi-qr/dist/style.css'
 
 export default function Demo() {
   return (
@@ -23,10 +23,7 @@ export default function Demo() {
       payeeName="Green Leaf Store"
       amount={299}
       transactionNote="Thanks for your order"
-      primaryColor="#16a34a"
-      bgColor="#f0fdf4"
-      textColor="#14532d"
-      qrColor="#14532d"
+      colorPreset="forest"
     />
   )
 }
@@ -35,8 +32,8 @@ export default function Demo() {
 ### QraftStudio (stateful wizard)
 
 ```jsx
-import { QraftStudio } from 'qraft'
-import 'qraft/dist/style.css'
+import { QraftStudio } from 'qraft-upi-qr'
+import 'qraft-upi-qr/dist/style.css'
 
 export default function Demo() {
   return <QraftStudio />
@@ -47,7 +44,7 @@ export default function Demo() {
 
 ```jsx
 import { useState } from 'react'
-import { QraftStudio } from 'qraft'
+import { QraftStudio } from 'qraft-upi-qr'
 
 export default function Controlled() {
   const [value, setValue] = useState({
@@ -73,7 +70,7 @@ export default function Controlled() {
 ## Core Utilities (Headless)
 
 ```js
-import { generateUPIString, generateQRDataURL } from 'qraft'
+import { generateUPIString, generateQRDataURL } from 'qraft-upi-qr'
 
 const upi = generateUPIString({ upiId: 'merchant@okaxis', payee: 'Green Leaf Store' })
 const dataUrl = await generateQRDataURL(upi)
