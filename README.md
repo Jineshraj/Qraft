@@ -10,6 +10,14 @@ npm install qraft-upi-qr
 
 ## Quick Usage
 
+## What You Get (Two Types)
+
+**1) QraftWidget**  
+A **stateless**, presentational QR label component. You pass props (UPI ID, colors, logo, etc.) and it renders a ready-to-export label.
+
+**2) QraftStudio**  
+A **stateful** 3-step wizard (Payment → Branding → Design) with built‑in actions (PNG/JPG export, Print, Share link, Reset).
+
 ### QraftWidget (stateless)
 
 ```jsx
@@ -66,6 +74,63 @@ export default function Controlled() {
   return <QraftStudio value={value} onChange={setValue} />
 }
 ```
+
+## Studio Actions (Buttons)
+
+The Studio UI includes these built‑in actions:
+
+- **PNG / JPG**: Export the label image.
+- **Print**: Opens a print dialog with the label.
+- **Share**: Copies a URL containing encoded state parameters.
+- **Reset**: Clears the wizard back to defaults.
+
+If you only want a UI without these actions, use `QraftWidget` and build your own controls.
+
+## Props Reference
+
+### QraftWidget Props
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `upiId` | `string` | UPI ID to encode into the QR. |
+| `payeeName` | `string` | Display name for the payee. |
+| `payee` | `string` | Alias for `payeeName`. |
+| `amount` | `string \| number` | Fixed amount (optional). |
+| `transactionNote` | `string` | Note shown to payer in UPI apps. |
+| `note` | `string` | Alias for `transactionNote`. |
+| `bizName` | `string` | Business name shown on the label. |
+| `tagline` | `string` | Short tagline under business name. |
+| `logoUrl` | `string` | Logo image URL (preferred). |
+| `logoDataUrl` | `string` | Logo as data URL (legacy alias). |
+| `colorPreset` | `string` | One of `forest`, `ocean`, `grape`, `flame`, `rose`, `slate`, `gold`, `teal`. |
+| `primaryColor` | `string` | Accent color (overrides preset). |
+| `bgColor` | `string` | Background color (overrides preset). |
+| `textColor` | `string` | Text color (overrides preset). |
+| `qrColor` | `string` | QR foreground color (overrides preset). |
+| `frame` | `string` | Frame style: `minimal`, `bordered`, `badge`, `receipt`. |
+| `size` | `string` | Size: `sm`, `md`, `lg`, `sq`. |
+| `state` | `object` | Legacy full state object (overrides individual props). |
+
+### QraftStudio Props
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `defaultValue` | `object` | Initial state (uncontrolled mode). |
+| `value` | `object` | Full state (controlled mode). |
+| `onChange` | `(state) => void` | Fired on any state update (controlled mode). |
+
+## Preset Colors (Quick Visual)
+
+| Preset | Accent | Background | Text | QR |
+| --- | --- | --- | --- | --- |
+| `forest` | `#16a34a` | `#f0fdf4` | `#14532d` | `#14532d` |
+| `ocean` | `#0ea5e9` | `#f0f9ff` | `#0c4a6e` | `#0c4a6e` |
+| `grape` | `#7c3aed` | `#faf5ff` | `#3b0764` | `#3b0764` |
+| `flame` | `#ea580c` | `#fff7ed` | `#7c2d12` | `#7c2d12` |
+| `rose` | `#e11d48` | `#fff1f2` | `#881337` | `#881337` |
+| `slate` | `#475569` | `#f8fafc` | `#0f172a` | `#0f172a` |
+| `gold` | `#d97706` | `#fffbeb` | `#78350f` | `#78350f` |
+| `teal` | `#0d9488` | `#f0fdfa` | `#134e4a` | `#134e4a` |
 
 ## Core Utilities (Headless)
 
