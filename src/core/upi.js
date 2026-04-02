@@ -7,6 +7,9 @@ export function buildUPIString({ upiId, payee, amount, note }) {
   return str
 }
 
+// Public-friendly alias for the UPI string generator.
+export const generateUPIString = buildUPIString
+
 // Encode current generator state into a shareable query string.
 export function encodeShareParams(state) {
   const p = new URLSearchParams({

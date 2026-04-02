@@ -1,16 +1,26 @@
-// 1. Export the full Studio Wizard (Named Export for Tree-shaking)
-export { default as QraftStudio } from "./App";
+// Base styles for widget/studio (emitted to dist/style.css in library build).
+import './index.css'
 
-// 2. Export the standalone Widget (Named Export for Tree-shaking)
-export { default as QraftWidget } from "./components/QRLabel";
+// 1. Export the full Studio Wizard (named export for tree-shaking)
+export { default as QraftStudio } from "./components/QraftStudio";
 
-// 3. Export pure logic utilities for developers building custom UIs/backends
-export { buildUPIString, encodeShareParams } from "./utils/upi";
+// 2. Export the standalone Widget (named export for tree-shaking)
+export { default as QraftWidget } from "./components/QraftWidget";
 
-// 4. Export DOM/Export utilities (These will be guarded for SSR internally)
+// 3. Export pure logic utilities for custom UIs/backends
+export {
+  buildUPIString,
+  generateUPIString,
+  encodeShareParams,
+  decodeShareParams,
+} from "./core/upi";
+
+export { generateQRDataURL } from "./core/qr";
+
+// 4. Export DOM/Export utilities (guarded for SSR internally)
 export {
   downloadPNG,
   downloadJPG,
   printLabel,
   captureLabel,
-} from "./utils/export";
+} from "./utils/dom-export";

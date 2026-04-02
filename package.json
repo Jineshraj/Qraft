@@ -1,7 +1,7 @@
 {
   "name": "qraft",
   "version": "0.1.0",
-  "description": "UPI QR & Label Generator — Modern UI",
+  "description": "Qraft - UPI QR & label generator for React",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.es.js",
@@ -17,6 +17,14 @@
   "files": [
     "dist"
   ],
+  "keywords": [
+    "upi",
+    "qr",
+    "react",
+    "payments",
+    "label",
+    "qraft"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -24,12 +32,19 @@
   },
   "dependencies": {
     "html2canvas": "^1.4.1",
-    "qrcode.react": "^3.1.0",
+    "qrcode": "^1.5.3",
+    "qrcode.react": "^3.1.0"
+  },
+  "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.2.1",
-    "vite": "^5.1.0"
+    "@vitejs/plugin-react": "^6.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.5.4",
+    "vite": "^8.0.3",
+    "vite-plugin-dts": "^1.0.5"
   }
 }

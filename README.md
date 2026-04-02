@@ -1,46 +1,102 @@
-# UPI QR Studio — v2
+# Qraft
 
-A modern, dark-mode React app for generating UPI payment QR labels.
+A reusable React package for generating UPI QR labels and a complete 3-step studio UI.
 
-## What's new in v2
-- Dark mode first UI with `Outfit` typeface
-- 3-step wizard: Payment → Branding → Design
-- 8 one-click colour presets + manual colour pickers
-- Dot-grid preview canvas with live dot indicator
-- Inline UPI string preview with validation
-- Logo drag-and-drop zone
-- Expand / fit preview toggle
-- All export options: PNG (3×), JPG, Print, Share link
-
-## Quick start
+## Installation
 
 ```bash
-npm install
-npm run dev
-# → http://localhost:5173
+npm install qraft
 ```
 
-## Deploy
+## Quick Usage
 
-```bash
-npm run build        # /dist
-npx vercel           # one command
-# or drag /dist → netlify.com/drop
+### QraftWidget (stateless)
+
+```jsx
+import { QraftWidget } from 'qraft'
+import 'qraft/dist/style.css'
+
+export default function Demo() {
+  return (
+    <QraftWidget
+      upiId="merchant@okaxis"
+      payeeName="Green Leaf Store"
+      amount={299}
+      transactionNote="Thanks for your order"
+      primaryColor="#16a34a"
+      bgColor="#f0fdf4"
+      textColor="#14532d"
+      qrColor="#14532d"
+    />
+  )
+}
 ```
 
-## Structure
+### QraftStudio (stateful wizard)
 
+```jsx
+import { QraftStudio } from 'qraft'
+import 'qraft/dist/style.css'
+
+export default function Demo() {
+  return <QraftStudio />
+}
 ```
-src/
-├── App.jsx                     # Everything — wizard, steps, layout
-├── components/
-│   └── QRLabel.jsx             # Rendered label (also used by html2canvas)
-├── hooks/
-│   └── useGeneratorState.js    # State + URL param restore
-└── utils/
-    ├── upi.js                  # UPI string, share encode/decode
-    └── export.js               # PNG / JPG / Print
+
+## Controlled Mode (Studio)
+
+```jsx
+import { useState } from 'react'
+import { QraftStudio } from 'qraft'
+
+export default function Controlled() {
+  const [value, setValue] = useState({
+    upiId: 'merchant@okaxis',
+    payee: 'Green Leaf Store',
+    amount: '',
+    note: '',
+    bizName: '',
+    tagline: '',
+    logoDataUrl: null,
+    primaryColor: '#16a34a',
+    bgColor: '#f0fdf4',
+    textColor: '#14532d',
+    qrColor: '#14532d',
+    frame: 'minimal',
+    size: 'md',
+  })
+
+  return <QraftStudio value={value} onChange={setValue} />
+}
 ```
+
+## Core Utilities (Headless)
+
+```js
+import { generateUPIString, generateQRDataURL } from 'qraft'
+
+const upi = generateUPIString({ upiId: 'merchant@okaxis', payee: 'Green Leaf Store' })
+const dataUrl = await generateQRDataURL(upi)
+```
+
+## Styling
+
+Qraft uses CSS variables to make theming easy. Override them in your app:
+
+```css
+:root {
+  --accent: #16a34a;
+  --bg: #0f0f0f;
+  --text: #ffffff;
+  --radius-md: 12px;
+}
+```
+
+## Troubleshooting
+
+- Logos hosted on other domains may require CORS headers to render in exports.
+- For print/export issues, ensure the component is visible in the DOM.
 
 ## License
+
 MIT

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { decodeShareParams } from '../utils/upi'
+import { decodeShareParams } from '../core/upi'
 
 export const DEFAULT_STATE = {
   upiId:        'merchant@okaxis',
@@ -17,10 +17,12 @@ export const DEFAULT_STATE = {
   size:         'md',
 }
 
-export function useGeneratorState() {
+// Internal hook for the Studio wizard's uncontrolled state.
+export function useQraftState(defaultValue) {
   const [state, setState] = useState(() => {
-    const fromUrl = decodeShareParams(window.location.search)
-    return fromUrl ? { ...DEFAULT_STATE, ...fromUrl } : DEFAULT_STATE
+    const fromUrl = typeof window !== 'undefined' ? decodeShareParams(window.location.search) : null
+    const base = fromUrl ? { ...DEFAULT_STATE, ...fromUrl } : { ...DEFAULT_STATE }
+    return defaultValue ? { ...base, ...defaultValue } : base
   })
 
   const update = (key, value) => setState(prev => ({ ...prev, [key]: value }))

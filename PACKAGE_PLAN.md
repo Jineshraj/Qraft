@@ -109,6 +109,18 @@ And override via their own CSS:
 
 ## 5. Execution Roadmap
 
+## Progress Checklist
+
+- [x] Phase 1: Refactor into `core/`, `components/`, `hooks/`, `utils/`, `index.js`
+- [x] Phase 1: Convert `App.jsx` -> `QraftStudio.jsx` (controlled + uncontrolled)
+- [x] Phase 1: Convert `QRLabel.jsx` -> `QraftWidget.jsx` (prop-driven)
+- [x] Phase 1: Implement `generateQRDataURL` (no html2canvas)
+- [x] Phase 2: Vite library mode + externalize `react`/`react-dom`
+- [x] Phase 2: Generate `.d.ts` files
+- [x] Phase 3: Update `package.json` exports/entrypoints
+- [x] Phase 4: Rewrite README with usage, props, theming
+- [ ] Phase 5: Build, pack, publish (SemVer)
+
 ### Phase 1: Refactoring the Code for Props
 
 - Reorganize files into `core/`, `components/`, etc.

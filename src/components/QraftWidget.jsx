@@ -1,6 +1,6 @@
 import React from 'react'
 import { QRCodeSVG } from 'qrcode.react'
-import { buildUPIString, hexToRgb, formatINR } from '../utils/upi'
+import { buildUPIString, hexToRgb, formatINR } from '../core/upi'
 
 const SIZES = {
   sm: { width: 270, qr: 130, font: 13 },
@@ -9,7 +9,23 @@ const SIZES = {
   sq: { width: 360, qr: 172, font: 15 },
 }
 
-export default function QRLabel({ state }) {
+export default function QraftWidget(props) {
+  const state = props.state || {
+    upiId: props.upiId || '',
+    payee: props.payeeName || props.payee || '',
+    amount: props.amount || '',
+    note: props.transactionNote || props.note || '',
+    bizName: props.bizName || '',
+    tagline: props.tagline || '',
+    logoDataUrl: props.logoUrl || props.logoDataUrl || null,
+    primaryColor: props.primaryColor || '#16a34a',
+    bgColor: props.bgColor || '#f0fdf4',
+    textColor: props.textColor || '#14532d',
+    qrColor: props.qrColor || '#14532d',
+    frame: props.frame || 'minimal',
+    size: props.size || 'md',
+  }
+
   const { upiId, payee, amount, note, bizName, tagline, logoDataUrl,
           primaryColor, bgColor, textColor, qrColor, frame, size } = state
 
