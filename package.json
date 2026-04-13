@@ -1,6 +1,6 @@
 {
   "name": "qraft-upi-qr",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Qraft - UPI QR & label generator for React",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -12,7 +12,8 @@
       "require": "./dist/index.cjs",
       "types": "./dist/index.d.ts"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css",
+    "./dist/style.css": "./dist/style.css"
   },
   "files": [
     "dist"
@@ -45,6 +46,7 @@
     "react-dom": "^18.2.0",
     "typescript": "^5.5.4",
     "vite": "^8.0.3",
+    "vite-plugin-css-injected-by-js": "^4.0.1",
     "vite-plugin-dts": "^1.0.5"
   }
 }

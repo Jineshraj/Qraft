@@ -10,6 +10,8 @@ npm install qraft-upi-qr
 
 ## Quick Usage
 
+> **🚀 Zero-Config Styling**: `qraft-upi-qr` automatically injects its own styles upon import. You do not need to import any CSS files manually!
+
 ## What You Get (Two Types)
 
 **1) QraftWidget**  
@@ -22,7 +24,6 @@ A **stateful** 3-step wizard (Payment → Branding → Design) with built‑in a
 
 ```jsx
 import { QraftWidget } from 'qraft-upi-qr'
-import 'qraft-upi-qr/dist/style.css'
 
 export default function Demo() {
   return (
@@ -41,7 +42,6 @@ export default function Demo() {
 
 ```jsx
 import { QraftStudio } from 'qraft-upi-qr'
-import 'qraft-upi-qr/dist/style.css'
 
 export default function Demo() {
   return <QraftStudio />
