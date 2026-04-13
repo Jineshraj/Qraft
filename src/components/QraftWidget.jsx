@@ -39,6 +39,7 @@ export default function QraftWidget(props) {
 
   const containerStyle = {
     width: sz.width,
+    maxWidth: '100%',
     background: bgColor,
     fontFamily: "'Outfit', sans-serif",
     overflow: 'hidden',
