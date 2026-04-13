@@ -182,22 +182,23 @@ export default function Demo() {
 
 ## Core Javascript Utilities (Headless SDK)
 
-Beyond the React components, we export pure Javascript functions that you can use anywhere:
+Beyond the React components, we export pure Javascript functions giving you absolute control:
 
-```js
-import { 
-  generateUPIString, 
-  generateQRDataURL,
-  downloadPNG,
-  downloadJPG,
-  printLabel,
-  captureLabel 
-} from 'qraft-upi-qr'
+### 1. Payment Link Generation
+- **`generateUPIString({ upiId, payee, amount, note })`**: Returns a raw `upi://pay?...` deep link.
+- **`buildUPIString(state)`**: Similar to above but handles default sanitization.
+- **`generateQRDataURL(upiString)`**: Generates a standard Base64 QR code image string from a UPI link.
 
-// Generate Raw Payment Links
-const upi = generateUPIString({ upiId: 'merchant@okaxis', payee: 'Green Leaf Store' })
-const dataUrl = await generateQRDataURL(upi)
-```
+### 2. State Encoding (For URL sharing)
+- **`encodeShareParams(state)`**: Compresses your configuration state into a short URL string.
+- **`decodeShareParams(searchParams)`**: Decodes a URL string back into the config state object.
+
+### 3. DOM Image Export (Headless Buttons)
+Attach these to your own buttons (requires `ref` to the `QraftWidget`):
+- **`downloadPNG(ref, filename)`**: Takes a high-res screenshot of the widget and downloads it as a PNG.
+- **`downloadJPG(ref, filename, quality)`**: Takes a high-res screenshot and downloads it as a JPG.
+- **`printLabel(ref)`**: Takes a high-res screenshot and immediately opens the browser's Print dialog.
+- **`captureLabel(ref, mimeType)`**: Takes a high-res screenshot and returns the raw Base64 data URL (useful for uploading to a server instead of downloading).
 
 ## License
 
